@@ -9,28 +9,30 @@ class Node {
 /* Defining LinkedList class */
 class LinkedList {
   /* Declaring class properties */
-  head = new Node(null);
+  head;
   size = 0;
-  tail = new Node(null);
+  tail;
 
   /* The constructor takes an array[] as a parameter to set values */
   constructor(array) {
-    this.head = new Node(array[0]);
-    this.size = array.length;
+    if (array) {
+      this.head = new Node(array[0]);
+      this.size = array.length;
 
-    if (array[1]) {
-      let current;
-      current = this.head;
+      if (array[1]) {
+        let current;
+        current = this.head;
 
-      for (let i = 1; i < array.length; i++) {
-        const node = new Node(array[i]);
+        for (let i = 1; i < array.length; i++) {
+          const node = new Node(array[i]);
 
-        current.next = node;
-        current = current.next;
-      }
+          current.next = node;
+          current = current.next;
+        }
 
-      this.tail = current;
-    } else this.tail = this.head;
+        this.tail = current;
+      } else this.tail = this.head;
+    }
   }
 
   /* Method that will add a Node with the passed value at the end of the LinkedList */
@@ -96,7 +98,7 @@ class LinkedList {
 
   /* Method that will delete the last Node of the LinkedList */
   deleteTail() {
-    if (this.size === 1) {
+    if (this.size === 0 || this.size === 1) {
       this.head = null;
       this.tail = null;
     } else if (this.size === 2) {
