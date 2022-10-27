@@ -94,7 +94,7 @@ describe('Testing LinkedList class', () => {
     const ll4 = new LinkedList([6, 'Y']);
 
     expect(ll1.reverse()).toEqual([3, 1, 2, 4]);
-    expect(ll2.reverse()).toEqual();
+    expect(ll2.reverse()).toEqual([]);
     expect(ll3.reverse()).toEqual([1, 9, 4, 7, 2]);
     expect(ll4.reverse()).toEqual(['Y', 6]);
   });
