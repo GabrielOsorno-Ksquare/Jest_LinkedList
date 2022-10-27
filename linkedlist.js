@@ -93,9 +93,9 @@ class LinkedList {
       }
 
       newTail.next = null;
+      this.tail = newTail;
     }
 
-    this.tail = newTail;
     this.size--;
 
     return this.getList();
