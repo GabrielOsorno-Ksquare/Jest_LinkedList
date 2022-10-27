@@ -33,7 +33,7 @@ class LinkedList {
     } else this.tail = this.head;
   }
 
-  /* Method that will add a Node with the value passed at the end of the LinkedList */
+  /* Method that will add a Node with the passed value at the end of the LinkedList */
   addValueAtTail(value) {
     this.tail.next = new Node(value);
     this.tail = this.tail.next;
@@ -42,7 +42,7 @@ class LinkedList {
     return this.getList();
   }
 
-  /* Method that will add a Node with the value passed at the start of the LinkedList */
+  /* Method that will add a Node with the passed value at the start of the LinkedList */
   addValueAtHead(value) {
     const newNode = new Node(value);
 
@@ -53,7 +53,7 @@ class LinkedList {
     return this.getList();
   }
 
-  /* Method that will add a Node with the value passed at the middle(to the right if odd) of the LinkedList */
+  /* Method that will add a Node with the passed value at the middle(to the right if odd) of the LinkedList */
   addValueAtMiddle(value) {
     const newNode = new Node(value);
     let prevMidNode = this.head;
@@ -93,6 +93,7 @@ class LinkedList {
       }
 
       newTail.next = null;
+      this.tail = newTail;
     }
 
     this.size--;
