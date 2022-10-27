@@ -1,5 +1,7 @@
+/* Import */
 const LinkedList = require('./linkedlist.js');
 
+/* Tests */
 describe('Testing LinkedList class', () => {
   it('tests addValueAtTail method', () => {
     expect(new LinkedList([4, 2, 1, 3]).addValueAtTail(10)).toEqual(
