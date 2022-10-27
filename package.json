@@ -1,0 +1,25 @@
+{
+  "name": "jest_linkedlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linkedlist.js",
+  "scripts": {
+    "test": "jest linkedlist.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielOsorno-Ksquare/Jest_LinkedList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielOsorno-Ksquare/Jest_LinkedList/issues"
+  },
+  "homepage": "https://github.com/GabrielOsorno-Ksquare/Jest_LinkedList#readme",
+  "devDependencies": {
+    "jest": "^29.2.2"
+  },
+  "dependencies": {
+    "@types/jest": "^29.2.0"
+  }
+}
