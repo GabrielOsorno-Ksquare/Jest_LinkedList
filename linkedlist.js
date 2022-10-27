@@ -1,3 +1,4 @@
+/* Defining Node class */
 class Node {
   constructor(value) {
     this.value = value;
@@ -5,11 +6,14 @@ class Node {
   }
 }
 
+/* Defining LinkedList class */
 class LinkedList {
+  /* Declaring class properties */
   head;
   size;
   tail;
 
+  /* The constructor takes an array[] as a parameter to set values */
   constructor(array) {
     this.head = new Node(array[0]);
     this.size = array.length;
@@ -29,6 +33,7 @@ class LinkedList {
     } else this.tail = this.head;
   }
 
+  /* Method that will add a Node with the value passed at the end of the LinkedList */
   addValueAtTail(value) {
     this.tail.next = new Node(value);
     this.tail = this.tail.next;
@@ -37,6 +42,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will add a Node with the value passed at the start of the LinkedList */
   addValueAtHead(value) {
     const newNode = new Node(value);
 
@@ -47,6 +53,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will add a Node with the value passed at the middle(to the right if odd) of the LinkedList */
   addValueAtMiddle(value) {
     const newNode = new Node(value);
     let prevMidNode = this.head;
@@ -64,6 +71,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will delete the first Node of the LinkedList */
   deleteHead() {
     this.head = this.head.next;
     this.size--;
@@ -71,6 +79,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will delete the last Node of the LinkedList */
   deleteTail() {
     if (this.size === 1) {
       this.head = null;
@@ -91,6 +100,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will delete the middle(to the right if pair) Node of the LinkedList */
   deleteMiddle() {
     let prevMidNode = this.head;
 
@@ -110,6 +120,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will sort the LinkedList from higher to lower Node values */
   higherToLower() {
     let list = this.getList();
     let currNode;
@@ -131,6 +142,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will reverse the order of the LinkedList */
   reverse() {
     const list = this.getList();
     let currNode;
@@ -150,6 +162,7 @@ class LinkedList {
     return this.getList();
   }
 
+  /* Method that will return the LinkedList as an array[] */
   getList() {
     let currNode = this.head;
     const list = [];
@@ -167,4 +180,5 @@ class LinkedList {
   }
 }
 
+/* Export */
 module.exports = LinkedList;
