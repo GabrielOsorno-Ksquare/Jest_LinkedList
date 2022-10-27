@@ -9,9 +9,9 @@ class Node {
 /* Defining LinkedList class */
 class LinkedList {
   /* Declaring class properties */
-  head;
-  size;
-  tail;
+  head = new Node(null);
+  size = 0;
+  tail = new Node(null);
 
   /* The constructor takes an array[] as a parameter to set values */
   constructor(array) {
@@ -35,8 +35,14 @@ class LinkedList {
 
   /* Method that will add a Node with the passed value at the end of the LinkedList */
   addValueAtTail(value) {
-    this.tail.next = new Node(value);
-    this.tail = this.tail.next;
+    if (this.size === 0) {
+      this.head = new Node(value);
+      this.tail = new Node(value);
+    } else {
+      this.tail.next = new Node(value);
+      this.tail = this.tail.next;
+    }
+
     this.size++;
 
     return this.getList();
@@ -56,16 +62,23 @@ class LinkedList {
   /* Method that will add a Node with the passed value at the middle(to the right if odd) of the LinkedList */
   addValueAtMiddle(value) {
     const newNode = new Node(value);
-    let prevMidNode = this.head;
-    let nextMidNode = this.head.next;
 
-    for (let i = 0; i < this.size / 2 - 1; i++) {
-      prevMidNode = prevMidNode.next;
+    if (this.size === 0) {
+      this.head = new Node(value);
+      this.tail = new Node(value);
+    } else {
+      let prevMidNode = this.head;
+      let nextMidNode = this.head.next;
+
+      for (let i = 0; i < this.size / 2 - 1; i++) {
+        prevMidNode = prevMidNode.next;
+      }
+
+      nextMidNode = prevMidNode.next;
+      prevMidNode.next = newNode;
+      newNode.next = nextMidNode;
     }
 
-    nextMidNode = prevMidNode.next;
-    prevMidNode.next = newNode;
-    newNode.next = nextMidNode;
     this.size++;
 
     return this.getList();
@@ -73,8 +86,10 @@ class LinkedList {
 
   /* Method that will delete the first Node of the LinkedList */
   deleteHead() {
-    this.head = this.head.next;
-    this.size--;
+    if (this.size > 0) {
+      this.head = this.head.next;
+      this.size--;
+    }
 
     return this.getList();
   }
@@ -83,8 +98,10 @@ class LinkedList {
   deleteTail() {
     if (this.size === 1) {
       this.head = null;
+      this.tail = null;
     } else if (this.size === 2) {
       this.head.next = null;
+      this.tail = this.head;
     } else {
       let newTail = this.head;
 
@@ -96,27 +113,29 @@ class LinkedList {
       this.tail = newTail;
     }
 
-    this.size--;
+    if (this.size > 0) this.size--;
 
     return this.getList();
   }
 
   /* Method that will delete the middle(to the right if pair) Node of the LinkedList */
   deleteMiddle() {
-    let prevMidNode = this.head;
+    if (this.size > 0) {
+      let prevMidNode = this.head;
 
-    if (this.size % 2 === 0) {
-      for (let i = 0; i < this.size / 2 - 1; i++) {
-        prevMidNode = prevMidNode.next;
+      if (this.size % 2 === 0) {
+        for (let i = 0; i < this.size / 2 - 1; i++) {
+          prevMidNode = prevMidNode.next;
+        }
+      } else {
+        for (let i = 0; i < this.size / 2 - 2; i++) {
+          prevMidNode = prevMidNode.next;
+        }
       }
-    } else {
-      for (let i = 0; i < this.size / 2 - 2; i++) {
-        prevMidNode = prevMidNode.next;
-      }
+
+      prevMidNode.next = prevMidNode.next.next;
+      this.size--;
     }
-
-    prevMidNode.next = prevMidNode.next.next;
-    this.size--;
 
     return this.getList();
   }
