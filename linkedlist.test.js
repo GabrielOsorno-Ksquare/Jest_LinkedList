@@ -3,12 +3,19 @@ const LinkedList = require('./linkedlist.js');
 
 /* Tests */
 describe('Testing LinkedList class', () => {
-  it('addValueAtTail method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
+  let ll1;
+  let ll2;
+  let ll3;
+  let ll4;
 
+  beforeEach(() => {
+    ll1 = new LinkedList([4, 2, 1, 3]);
+    ll2 = new LinkedList();
+    ll3 = new LinkedList([2, 7, 4, 9, 1]);
+    ll4 = new LinkedList([6, 'Y']);
+  });
+
+  it('addValueAtTail method', () => {
     expect(ll1.addValueAtTail(10)).toEqual([4, 2, 1, 3, 10]);
     expect(ll2.addValueAtTail(10)).toEqual([10]);
     expect(ll3.addValueAtTail(['15'])).toEqual([2, 7, 4, 9, 1, ['15']]);
@@ -16,11 +23,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('addValueAtHead method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.addValueAtHead(0)).toEqual([0, 4, 2, 1, 3]);
     expect(ll2.addValueAtHead(0)).toEqual([0]);
     expect(ll3.addValueAtHead(['A'])).toEqual([['A'], 2, 7, 4, 9, 1]);
@@ -28,11 +30,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('addValueAtMiddle method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.addValueAtMiddle(5)).toEqual([4, 2, 5, 1, 3]);
     expect(ll2.addValueAtMiddle(5)).toEqual([5]);
     expect(ll3.addValueAtMiddle(['M'])).toEqual([2, 7, 4, ['M'], 9, 1]);
@@ -40,11 +37,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('deleteHead method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.deleteHead()).toEqual([2, 1, 3]);
     expect(ll2.deleteHead()).toEqual([]);
     expect(ll3.deleteHead()).toEqual([7, 4, 9, 1]);
@@ -52,11 +44,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('deleteTail method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.deleteTail()).toEqual([4, 2, 1]);
     expect(ll2.deleteTail()).toEqual([]);
     expect(ll3.deleteTail()).toEqual([2, 7, 4, 9]);
@@ -64,11 +51,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('deleteMiddle method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.deleteMiddle()).toEqual([4, 2, 3]);
     expect(ll2.deleteMiddle()).toEqual([]);
     expect(ll3.deleteMiddle()).toEqual([2, 7, 9, 1]);
@@ -76,11 +58,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('higherToLower method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.higherToLower()).toEqual([4, 3, 2, 1]);
     expect(ll2.higherToLower()).toEqual([]);
     expect(ll3.higherToLower()).toEqual([9, 7, 4, 2, 1]);
@@ -88,11 +65,6 @@ describe('Testing LinkedList class', () => {
   });
 
   it('reverse method', () => {
-    const ll1 = new LinkedList([4, 2, 1, 3]);
-    const ll2 = new LinkedList();
-    const ll3 = new LinkedList([2, 7, 4, 9, 1]);
-    const ll4 = new LinkedList([6, 'Y']);
-
     expect(ll1.reverse()).toEqual([3, 1, 2, 4]);
     expect(ll2.reverse()).toEqual([]);
     expect(ll3.reverse()).toEqual([1, 9, 4, 7, 2]);
